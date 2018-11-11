@@ -10,7 +10,7 @@ img {
 
 .dad {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   border: 5px solid black;
   height: 500px;
   background-color: black;

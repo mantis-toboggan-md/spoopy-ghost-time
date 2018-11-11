@@ -1,8 +1,6 @@
 var image = document.querySelector('img')
 
 
-var imageCoords = image.getBoundingCLientRect
-
 image.addEventListener("mouseover", ghostAppears);
 
 function ghostAppears() {
@@ -35,7 +33,18 @@ function ghostisVanquished() {
 
   setTimeout(removeText, 2000)
   function removeText() {
-
     parent.removeChild(newText)
   }
+
+  setTimeout(aNewGhost, 4000)
+  function aNewGhost() {
+    var aNewGhost = document.createElement('img')
+    aNewGhost.src = "Assets/images/moreSpoopyGhosts.png";
+    aNewGhost.alt = "a new cute ghost click it before it pulls your heart strings!";
+    aNewGhost.style.opacity = 1; //this is temporary, I need to call the above code to happen again, so when a user mouses over the new ghost/clicks it/etc, all the same stuff happens
+
+    parent.appendChild(aNewGhost)
+
+  }
+
 }
