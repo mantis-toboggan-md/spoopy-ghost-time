@@ -17,14 +17,7 @@ var mousoverEffect = imageArray.forEach(function(elem) {
   }
 })
 
-arrayOfBoxes.forEach(function(e)) {
-  e.addEventListener("mouseover", ghostAppears);
-  function ghostAppears(){
-    if(this.target && this.target.nodeName == "IMG") {
-      this.target
-    }
-  }
-}
+
 
 
 
@@ -32,9 +25,9 @@ arrayOfBoxes.forEach(function(e)) {
 //THE FUNCTION BELOW CAUSES ALL IMAGES ON PAGE FADE OUT OF VISIBILITY WHEN MOUSE LEAVES
 
 var mouseOffEffect = imageArray.forEach(function(elem){
-  elem.addEventListener("mouseleave", ghostAppears);
+  elem.addEventListener("mouseleave", ghostDisappears);
 
-  function ghostAppears() {
+  function ghostDisappears() {
     elem.style.opacity = "0";
     elem.style.transition = "3s"
   }
