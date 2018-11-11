@@ -1,7 +1,34 @@
 h1 {
   color:red;
+  text-align: center;
 }
 
 img {
   opacity: 0;
+  align-self: flex-start;
+}
+
+.dad {
+  display: flex;
+  justify-content: center;
+  border: 5px solid black;
+  height: 500px;
+  background-color: black;
+}
+
+@keyframes flashIn {
+  from {
+    color: white;
+  }
+  to {
+    color: black;
+    }
+}
+
+
+p {
+  display: block;
+    color: white;
+    animation-name: flashIn;
+    animation-duration: 2s;
 }
