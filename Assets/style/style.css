@@ -12,7 +12,8 @@ img {
   display: flex;
   /* justify-content: center; */
   border: 5px solid black;
-  height: 500px;
+  min-height: 700px;
+  /* background-image: url(Assets/images/Haunted-House-medium-colored.png); */
   background-color: black;
 }
 
@@ -26,9 +27,13 @@ img {
 }
 
 
-p {
-  display: block;
+h2.vanquished {
     color: white;
     animation-name: flashIn;
     animation-duration: 2s;
+}
+
+.boxes {
+  -ms-align-items: center;
+  align-items: center;
 }
