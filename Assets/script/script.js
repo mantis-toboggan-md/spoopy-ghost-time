@@ -14,7 +14,7 @@ var aNewGhost
 var ghostsVanquished = 0;
 
 
-var someGhosts = ["Assets/images/moreSpoopyGhosts.png", "Assets/images/superSpoopyGhost.png", "Assets/images/theSpoopiestGhost.png", "Assets/images/two-spoopy-ghosts.png"];
+var someGhosts = ["Assets/images/mosquito1.png", "Assets/images/mosquito2.png"];
 
 var getRandomGhost = function() {
   return someGhosts[Math.floor(Math.random()*someGhosts.length)]
@@ -52,24 +52,10 @@ document.querySelector('.dad').addEventListener('mouseout', function(event) {
 document.querySelector('.dad').addEventListener('click', function(event) {
   if (event.target.tagName.toLowerCase() === 'img') {
     ghostsVanquished ++
-    document.querySelector(".btn-info").textContent = `Ghosts Vanquished: ${ghostsVanquished}`
+    document.querySelector(".btn-info").textContent = `Mosquitos Squashed: ${ghostsVanquished}`
     images = event.target
-    //VAR IDENTIFIES PARENT OF IMAGE ELEMENT (IT'S BOX)
-    parent = images.parentElement
-    //CREATES NEW H2 ELEMENT IN A VARIABLE
-    newText = document.createElement('h2');
-    //MAKES THE H2 TEXT NODE READ THE FOLLOWING
-    newText.textContent = "You vanquished the ghost!";
-    // MAKES THE H2 CLASSNAME 'VANQUISHED'
-    newText.className = "vanquished text-center";
-
-
-    //ACTUALLY PLACES THIS NEW TEXT INSIDE THE PARENT ELEMENT (BOXES)
-    parent.appendChild(newText);
-
-
-    //REMOVES THE IMAGE ELEMENT FROM THE DOCUMENT
-    parent.removeChild(images);
+    images.src = "Assets/images/splat.png"
+    images.classList.add("splat")
 
     // rANDOM AMOUNT OF  SECONDS BETWEEN 1/2 AFTER THE USER CLICKS, THIS HAPPENS:
     setTimeout(removeText, 2000, newText)
@@ -78,7 +64,7 @@ document.querySelector('.dad').addEventListener('click', function(event) {
 
 
       // 3 SECONDS AFTER THE CLICK (AND 1 SECOND AFTER THE H2 ELEMENT IS REMOVED), THIS HAPPENS:
-setInterval(makeaNewGhost, Math.floor(Math.random()*2000))
+setInterval(makeaNewGhost, Math.floor(Math.random()*3000))
 function  makeaNewGhost() {
     //A NEW IMAGE ELEMENT IS CREATED
     aNewGhost = document.createElement('img');
@@ -97,7 +83,7 @@ function  makeaNewGhost() {
       randomboxDad.removeChild(randomboxDad.childNodes[0])
     }
     randomboxDad.appendChild(aNewGhost)
-    setTimeout(aGhostEscapes, 750, aNewGhost)
+    setTimeout(aGhostEscapes, 2000, aNewGhost)
   }
 
 
@@ -105,10 +91,10 @@ function  makeaNewGhost() {
 
 var escapedGhostCounter = 0;
 function aGhostEscapes(fourSecondOldGhost) {
-  if(fourSecondOldGhost.parentNode) {
+  if(!fourSecondOldGhost.classList.contains("splat")) {
     var newWarnText = document.createElement('h2');
     //MAKES THE H2 TEXT NODE READ THE FOLLOWING
-    newWarnText.textContent = "A ghost escaped!!";
+    newWarnText.textContent = "A mosquito bit you!!";
     // MAKES THE H2 CLASSNAME 'VANQUISHED'
     newWarnText.className = "escaped text-center";
 
@@ -119,10 +105,9 @@ function aGhostEscapes(fourSecondOldGhost) {
     setTimeout(removeText, 2000, newWarnText)
 
     escapedGhostCounter ++
-    document.querySelector(".btn-danger").textContent = `Ghosts Escaped: ${escapedGhostCounter}`
+    document.querySelector(".btn-danger").textContent = `Mosquito Bites: ${escapedGhostCounter}`
 
     // makeaNewGhost()
-    console.log(escapedGhostCounter + " ghost(s) escaped")
   }  // makeaNewGhost()
 }
 
